@@ -1,9 +1,16 @@
-#Configuration for dev profile
+# Configuration for dev profile
 "%dev":
   quarkus:
     datasource:
-      jdbc: false
+      jdbc:
+        ~: true
+        url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+      db-kind: h2
+    hibernate-orm:
+      database:
+        generation: drop-and-create
 
+# The default profile is used when no profile is specified
 quarkus:
   datasource:
     db-kind: postgresql

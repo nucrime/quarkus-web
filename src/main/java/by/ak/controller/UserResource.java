@@ -1,5 +1,6 @@
 package by.ak.controller;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
+@ApplicationScoped
 public class UserResource {
     @GET
     public String getUser() {

@@ -1,15 +1,11 @@
 package by.ak.model;
 
-import lombok.Data;
+import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
-@Data
-public class User {
-    @Id
-    private Long id;
+public class User extends PanacheEntity {
     private String name;
     private String email;
 }
