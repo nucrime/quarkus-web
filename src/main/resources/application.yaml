@@ -1,0 +1,12 @@
+#Configuration for dev profile
+"%dev":
+  quarkus:
+    datasource:
+      jdbc: false
+
+quarkus:
+  datasource:
+    db-kind: postgresql
+  hibernate-orm:
+    database:
+      generation: drop-and-create
