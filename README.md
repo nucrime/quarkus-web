@@ -1,55 +1,36 @@
 # quarkus-web Project
 
-This project uses [Quarkus](https://quarkus.io/), the Supersonic Subatomic Java Framework.
+This was made using [Active Record Pattern](https://en.wikipedia.org/wiki/Active_record_pattern) 
+
+and [Quarkus](https://quarkus.io/)
+
+
 
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
 ```shell script
+docker-compose up
 ./gradlew quarkusDev
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 > 
- To run dev profile:
+Swagger available at http://localhost:8080/q/swagger-ui/ 
+
+To run dev profile (app.yaml) use:
 ![img.png](img.png)
 
-## Packaging and running the application
-
-The application can be packaged using:
-```shell script
-./gradlew build
-```
-It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar build/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./gradlew build -Dquarkus.package.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./build/quarkus-web-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
-
-## Related Guides
-
-- RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive), [related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)): Reactive implementation of JAX-RS with additional features. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
+- RESTEasy Reactive [guide](https://quarkus.io/guides/resteasy-reactive), 
+- [related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+- https://quarkus.io/guides/hibernate-orm
+- https://stackoverflow.com/questions/58814922/quarkus-runtime-does-not-inject-entitymanager
+- https://quarkus.io/guides/getting-started-reactive
+- https://quarkus.io/guides/hibernate-orm-panache
+- https://quarkus.io/guides/datasource
+- https://www.youtube.com/watch?v=kAui1-4KBrk
+- https://quarkus.io/guides/reactive-sql-clients
+- https://github.com/quarkusio/quarkus/issues/13425
+- https://quarkus.io/guides/spring-web
 
 
