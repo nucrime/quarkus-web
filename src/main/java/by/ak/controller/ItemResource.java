@@ -1,10 +1,10 @@
 package by.ak.controller;
 
 import by.ak.model.Item;
-import by.ak.service.ItemService;
+import io.quarkus.hibernate.reactive.panache.Panache;
+import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,37 +15,35 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 
-@Path("/item")
+@Path(ItemResource.ITEM_PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
 public class ItemResource {
 
-    @Inject
-    ItemService service;
+    public static final String ITEM_PATH = "/item/";
 
     @GET
     @Path("/{id}")
-    public Item getItem(@PathParam("id") Long id) {
-        return service.getItem(id);
+    public Uni<Item> getItem(@PathParam("id") Long id) {
+        return Item.findById(id);
     }
 
     @POST
-    public Response.Status createItem(Item item) {
-        service.createItem(item);
-        return Response.Status.OK;
+    public Uni<Response> createItem(Item item) {
+        return Panache.<Item>withTransaction(item::persist)
+                .onItem().transform(inserted -> Response.created(URI.create(ITEM_PATH + inserted.id)).build());
     }
 
     @PUT
-    public Response.Status updateItem(Item item) {
-        service.updateItem(item);
-        return Response.Status.NO_CONTENT;
+    public Uni<Response> updateItem(Item item) {
+        return Item.update("where id = ?id", item).onItem().transform(updated -> Response.noContent().build());
     }
 
     @DELETE
-    public Response.Status deleteItem(Item item) {
-        service.deleteItem(item);
-        return Response.Status.NO_CONTENT;
+    public Uni<Response> deleteItem(Item item) {
+        return Item.deleteById(item.id).onItem().transform(updated -> Response.noContent().build());
     }
 }
