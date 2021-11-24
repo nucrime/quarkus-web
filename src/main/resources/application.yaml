@@ -1,18 +1,27 @@
-# Configuration for dev profile
-"%dev":
-  quarkus:
-    datasource:
-      jdbc:
-        ~: true
-        url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
-      db-kind: h2
-    hibernate-orm:
-      database:
-        generation: drop-and-create
+## Configuration for dev profile
+#"%dev":
+#  quarkus:
+#    datasource:
+#      jdbc:
+#        ~: true
+#        driver: org.h2.Driver
+#        url: jdbc:h2:mem:default;DB_CLOSE_DELAY=-1
+#      db-kind: h2
+#    hibernate-orm:
+#      packages:
+#        - by.ak.model
+#      database:
+#        generation: drop-and-create
 
 # The default profile is used when no profile is specified
 quarkus:
   datasource:
+    jdbc:
+      ~: false
+    reactive:
+      url: postgresql://localhost:5432/quarkus
+    username: quarkus
+    password: quarkus
     db-kind: postgresql
   hibernate-orm:
     database:
