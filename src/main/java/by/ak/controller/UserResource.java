@@ -1,5 +1,6 @@
 package by.ak.controller;
 
+import by.ak.model.Item;
 import by.ak.model.User;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.smallrye.mutiny.Uni;
@@ -17,6 +18,30 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 
+/**
+ * <b>UserResource controller</b>
+ *
+ * <pre>
+ * Path: /user
+ * Produces: application/json
+ * Consumes: application/json
+ * Methods:
+ * - GET /user/{id}
+ * - POST /user
+ * - PUT /user/{id}
+ * - DELETE /user/{id}
+ * </pre>
+ *
+ * Returns Uni&#60;User&#62;.
+ *   Uni represents a lazy asynchronous action
+ * @see Uni
+ *
+ * @see ApplicationScoped
+ * @see MediaType
+ * @see User
+ *
+ * @author Aliaksandr Karankevich
+ */
 @Path(UserResource.USER_PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

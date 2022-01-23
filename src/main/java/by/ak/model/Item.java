@@ -7,9 +7,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
- * Item entity
- * Uses PanacheEntity to implement reactive queries
- * Uses Cacheable to cache entity
+ * <p>
+ * Item entity.
+ * Uses PanacheEntity to implement reactive queries.
+ * Uses Cacheable to cache entity.
+ * </p>
+ *
+ * <pre>
+ * {@link Item#id} (Long). Comes from PanacheEntity
+ * {@link Item#name} (String) - item name. Unique. Max length: 40.
+ * {@link Item#description} (String) - item description
+ * {@link Item#image} (String) - item image
+ * {@link Item#price} (String) - item price
+ * {@link Item#category} (String) - item category
+ * </pre>
  *
  * @see io.quarkus.hibernate.reactive.panache.PanacheEntity
  * @see <a href="https://quarkus.io/guides/hibernate-reactive-panache">Quarkus Hibernate Reactive Panache</a>

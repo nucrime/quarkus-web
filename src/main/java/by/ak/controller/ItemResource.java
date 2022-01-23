@@ -17,6 +17,30 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 
+/**
+ * <b>ItemResource controller</b>
+ *
+ * <pre>
+ * Path: /item
+ * Produces: application/json
+ * Consumes: application/json
+ * Methods:
+ * - GET /item/{id}
+ * - POST /item
+ * - PUT /item/{id}
+ * - DELETE /item/{id}
+ * </pre>
+ *
+ * Returns Uni&#60;Item&#62;.
+ *   Uni represents a lazy asynchronous action
+ * @see Uni
+ *
+ * @see ApplicationScoped
+ * @see MediaType
+ * @see Item
+ *
+ * @author Aliaksandr Karankevich
+ */
 @Path(ItemResource.ITEM_PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
